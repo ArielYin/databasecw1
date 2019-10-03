@@ -1,0 +1,50 @@
+DROP TABLE IF EXISTS Belong;
+DROP TABLE IF EXISTS Album;
+DROP TABLE IF EXISTS Photo;
+DROP TABLE IF EXISTS Join_in;
+DROP TABLE IF EXISTS Cgroup;
+DROP TABLE IF EXISTS User;
+
+CREATE TABLE User (
+  userId VARCHAR(100) PRIMARY KEY,
+  nickname VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Cgroup (
+  groupId VARCHAR(100) PRIMARY KEY,
+  title VARCHAR(100) NOT NULL
+);
+
+CREATE TABLE Join_in (
+  userId VARCHAR(100),
+  groupId VARCHAR(100),
+  FOREIGN KEY (userId) REFERENCES User(userId),
+  FOREIGN KEY (groupId) REFERENCES Cgroup(groupId),
+  PRIMARY KEY (userId, groupId)
+);
+
+CREATE TABLE Photo (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  data BLOB,
+  uploadtime DATE,
+  description VARCHAR(100) NULL,
+  owner VARCHAR(100),
+  FOREIGN KEY (owner) REFERENCES User(userId)
+);
+
+CREATE TABLE Album (
+  id INTEGER PRIMARY KEY AUTO_INCREMENT,
+  title VARCHAR(100),
+  groupid VARCHAR(100),
+  FOREIGN KEY (groupid) REFERENCES Cgroup(groupId)
+);
+
+CREATE TABLE Belong (
+  photoId INTEGER,
+  albumId INTEGER,
+  FOREIGN KEY (photoId) REFERENCES Photo(id),
+  FOREIGN KEY (albumId) REFERENCES Album(id),
+  PRIMARY KEY (photoId, albumId)
+);
+
+

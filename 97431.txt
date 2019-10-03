@@ -1,0 +1,39 @@
+Modelling
+=========
+
++ Submission is complete and in the correct format 
++ Good choice of case study and scope
++ Use cases correspond to the diagram and the situation being modelled
++ Good choice of use cases
++ C-D script runs correctly
++ Script implements the diagram
+
+- In the diagram, the entity Join_in only describes a standard many-to-many relationship between User and Cgroup.  This could more simply be described by a line.  Similar comments apply to the entity Belong.
+- In use case 1, there may be several Cgroup with the same title (there is no UNIQUE constraint on title), so the query may return users from multiple groups.
+- Similarly, in use case 2, there may be two different users with nickname Hongkang and album name Birthday (this combination is not unique).  This query will display the photos from both together.
+
+Normalisation
+=============
+
++ Submission is complete
++ Correct identification of candidate keys
++ Correct identification of key and non-key attributes
++ Correct determination of normal forms
++ Sound justification for determination
++ Correct normalisations
+
+- How normalised are your new schemas?  BCNF?
+
+SQL
+===
+
+
+
+Census
+6. Incorrect column name - case sensitivity often matters for downstream systems 
+7. Case issue again - Name for "ALL" should be "All"
+
+
+Election
+
+8. Incorrect name on ward column
